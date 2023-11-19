@@ -1,0 +1,67 @@
+<!--<form [formGroup]="form" class="login-form">-->
+<!--  <mat-form-field class="example-full-width">-->
+<!--    <mat-label>Email</mat-label>-->
+<!--    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">-->
+<!--&lt;!&ndash;    <mat-hint>Errors appear instantly!</mat-hint>&ndash;&gt;-->
+<!--    <mat-error *ngIf="emailFormControl.hasError('required')">-->
+<!--      Email is <strong>required</strong>-->
+<!--    </mat-error>-->
+<!--  </mat-form-field>-->
+<!--</form>-->
+<mat-card>
+
+  <mat-card-content>
+
+    <div class="header">
+
+      <h1>Login</h1>
+    </div>
+    <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+         <div class="email-input">
+           <mat-form-field class="full-width " appearance="outline">
+             <mat-label>Email</mat-label>
+             <input formControlName="email" matInput required>
+             <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+               Required email address
+             </mat-error>
+             <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+               Invalid email format
+             </mat-error>
+           </mat-form-field>
+         </div>
+
+      <div >
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput [type]="hide? 'password' : 'text' " required>
+
+          <button mat-icon-button matSuffix (click)="hide=!hide"
+
+            [attr.aria-label]="'Hide Password'" [attr.aria-pressed] ="hide">
+            <mat-icon>{{hide?'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Required password
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+<!--      <a class="aLink">Forgot Password?</a>-->
+
+      <div class="forgot-password">
+        <a class="aLink blue-link">Forgot Password?</a>
+
+      </div>
+<div class="buttons">
+<!--  <a class="aLink">Forgot Password?</a>-->
+      <button class="registerButton" mat-flat-button color="primary">Register</button>
+      <button class="loginButton" mat-flat-button color="primary" type="submit" [disabled]="!loginForm.valid">Log In</button>
+</div>
+    </form>
+  </mat-card-content>
+</mat-card>
