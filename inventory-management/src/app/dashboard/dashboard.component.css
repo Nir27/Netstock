@@ -1,3 +1,55 @@
-.pclass{
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 110vh;
+  width: 1345px;
+  background-image: url('../../assets/warehouse.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white; /* Set text color to white for better visibility */
+  margin-top: -60px;
+  margin-left: -15px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 40px;
+}
+
+.logout-button {
   color: white;
+}
+
+.dashboard-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: -200px;
+}
+
+.dashboard-description {
+  text-align: left;
+  max-width: 400px;
+  margin-left: -20px;
+}
+
+.dashboard-description h1 {
+  font-size: 30px;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-button {
+  margin: 10px;
+  font-size: 20px; /* Increase the font size as needed */
+  padding: 15px 30px; /* Adjust padding for a larger button size */
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
 }
