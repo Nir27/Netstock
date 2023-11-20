@@ -8,6 +8,7 @@
 <!--    </mat-error>-->
 <!--  </mat-form-field>-->
 <!--</form>-->
+<div class="login-page">
 <mat-card>
 
   <mat-card-content>
@@ -59,9 +60,11 @@
       </div>
 <div class="buttons">
 <!--  <a class="aLink">Forgot Password?</a>-->
-      <button class="registerButton" mat-flat-button color="primary">Register</button>
+      <button class="registerButton" mat-flat-button color="primary" (click)="openRegisterPopup()">Register</button>
       <button class="loginButton" mat-flat-button color="primary" type="submit" [disabled]="!loginForm.valid">Log In</button>
 </div>
     </form>
   </mat-card-content>
 </mat-card>
+
+</div>

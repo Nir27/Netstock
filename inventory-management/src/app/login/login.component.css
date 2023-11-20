@@ -1,4 +1,4 @@
-mat-card{
+.login-page mat-card{
 
   max-width: 600px;
   margin: 2em auto;
@@ -8,50 +8,50 @@ mat-card{
   color: white;
 }
 
-.header{
+.login-page .header{
 
   margin-top: 20px;
   text-align: center;
 
 }
 
-.full-width{
+.login-page .full-width{
   width: 80%;
 }
 
-.forgot-password{
+.login-page .forgot-password{
 
   padding-left: 0px;
 }
 
-.email-input{
+.login-page .email-input{
 
   padding-top: 10px;
 }
 
-.blue-link {
+.login-page .blue-link {
   color: lightblue;
 }
-.buttons{
+.login-page .buttons{
 
   margin-left: 100px;
   margin-top: -20px;
 }
-.loginButton{
+.login-page .loginButton{
 
   /*position: relative;*/
   margin-top: -57px;
   margin-left: 300px;
 }
 
-.registerButton{
+.login-page .registerButton{
 
   /*position: relative;*/
   margin-top: 20px;
   margin-left: 0px;
 }
 
-.forgot-password{
+.login-page .forgot-password{
 
   margin-left: -335px;
   /*margin-top: 50px;*/

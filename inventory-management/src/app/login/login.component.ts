@@ -2,7 +2,10 @@ import { Component,OnInit } from '@angular/core';
 import {FormControl,FormGroup,Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {RegisterComponent} from "../register/register.component";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Dialog} from "@angular/cdk/dialog";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,7 @@ export class LoginComponent implements OnInit{
  email:String="";
  password:String="";
 
- constructor(private route:Router,private http:HttpClient) {
+ constructor(private route:Router,private http:HttpClient,public  dialog:Dialog){
  }
 
  ngOnInit() {
@@ -34,8 +37,8 @@ export class LoginComponent implements OnInit{
    this.email =this.loginForm.get('email')!.value;
    this.password = this.loginForm.get('password')!.value;
 
-   console.log(this.email);
-   console.log(this.password)
+   // console.log(this.email);
+   // console.log(this.password)
 
    let bodydata = {
 
@@ -55,4 +58,16 @@ this.http.post("http://localhost:8080/login",bodydata,{ responseType: 'text' }).
 });
 
  };
+
+ openRegisterPopup(){
+
+   const dialogRef = this.dialog.open(RegisterComponent, {
+     width: '600px',
+   });
+
+   // dialogRef.afterClosed().subscribe(result => {
+   //   console.log('The dialog was closed', result);
+   // });
+ }
+
 }

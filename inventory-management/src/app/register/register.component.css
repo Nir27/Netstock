@@ -1,0 +1,50 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /*background-color: #f5f5f5; !* Set a background color of your choice *!*/
+}
+
+.register-page mat-card {
+  width: 400px; /* Adjust the width based on your design preferences */
+  max-width: 100%;
+  background-color:  #484E55;
+}
+
+.register-page .mat-card-content {
+  padding: 20px;
+}
+
+.register-page .header {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.register-page .mat-form-field {
+  width: 100%;
+}
+
+.register-page .full-width {
+  width: 100%;
+}
+
+.register-page .email-input {
+  margin-bottom: 15px;
+}
+
+.register-page .buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-page .loginButton {
+  width: 40%;
+}
+
+.custom-snackbar {
+  height: 80px; /* Set the desired height */
+  background-color: #2196F3; /* Customize the background color */
+  color: #FFFFFF; /* Customize the text color */
+}
