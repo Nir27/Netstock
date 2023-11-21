@@ -16,12 +16,14 @@ import { RegisterComponent } from './register/register.component';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { AddInventoryComponent } from './add-inventory/add-inventory.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddInventoryComponent
   ],
   imports: [
     BrowserModule,
