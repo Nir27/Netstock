@@ -8,6 +8,84 @@
 
       <form (ngSubmit)="onAddInventory()" name="inventoryForm" [formGroup]="inventoryForm">
 
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Select Inventory Type</mat-label>
+            <select matNativeControl required [formControl]="typeControl">
+<!--              <option label="&#45;&#45;select something &#45;&#45;"></option>-->
+              <option value="tv">TV</option>
+              <option value="fridge">Fridge</option>
+              <option value="washing machine">Washing Machine</option>
+              <option value="laptop">Laptop</option>
+            </select>
+            <mat-error *ngIf="inventoryForm.get('typeControl')!.hasError('required')">
+              Required Inventory Type
+            </mat-error>
+            <mat-hint>You can pick up inventory type here</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Select Inventory Brand</mat-label>
+            <select matNativeControl required [formControl]="brandControl">
+              <!--              <option label="--select something --"></option>-->
+              <option value="samsung">Samsung</option>
+              <option value="lg">LG</option>
+              <option value="innovex">Innovex</option>
+            </select>
+            <mat-error *ngIf="inventoryForm.get('brandControl')!.hasError('required')">
+              Required Inventory Brand
+            </mat-error>
+            <mat-hint>You can pick up inventory brand here</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Description</mat-label>
+            <input [formControl]="descriptionControl" matInput required>
+            <mat-error *ngIf="inventoryForm.get('descriptionControl')!.hasError('required')">
+              Required description
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Price</mat-label>
+            <input [formControl]="priceControl" matInput required>
+            <mat-error *ngIf="inventoryForm.get('priceControl')!.hasError('required')">
+              Required price
+            </mat-error>
+            <mat-error *ngIf="inventoryForm.get('priceControl')!.hasError('min')">
+              Price cannot be negative
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+        <mat-form-field class="full-width " appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput required [matDatepicker]="picker" [formControl]="dateControl" [matDatepickerFilter]="filterDates " [disabled]="inventoryForm.get('notApplicableControl')?.value" >
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        </div>
+
+        <div class="email-input condition">
+<!--        <mat-form-field class="full-width" appearance="outline">-->
+          <mat-checkbox [formControl]="notApplicableControl" >Not Applicable</mat-checkbox>
+<!--        </mat-form-field>-->
+        </div>
+
+        <div class="buttons">
+          <!--  <a class="aLink">Forgot Password?</a>-->
+<!--          <button class="loginButton cancelButton" mat-flat-button  (click)="onclose()" >Cancel</button>-->
+          <button class="loginButton" mat-flat-button  (click)="onClear($event)" >Clear</button>
+          <button class="loginButton" mat-flat-button color="primary" type="submit" [disabled]="!inventoryForm.valid">Save</button>
+        </div>
 
       </form>
 

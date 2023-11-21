@@ -9,7 +9,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
@@ -17,6 +17,10 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { AddInventoryComponent } from './add-inventory/add-inventory.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {CommonModule, DatePipe} from "@angular/common";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +41,15 @@ import { AddInventoryComponent } from './add-inventory/add-inventory.component';
     HttpClientModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CommonModule,
+    FormsModule,
+    MatCheckboxModule
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
