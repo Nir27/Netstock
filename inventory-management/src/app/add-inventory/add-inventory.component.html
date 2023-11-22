@@ -13,10 +13,10 @@
             <mat-label>Select Inventory Type</mat-label>
             <select matNativeControl required [formControl]="typeControl">
 <!--              <option label="&#45;&#45;select something &#45;&#45;"></option>-->
-              <option value="tv">TV</option>
-              <option value="fridge">Fridge</option>
-              <option value="washing machine">Washing Machine</option>
-              <option value="laptop">Laptop</option>
+              <option value="TV">TV</option>
+              <option value="Fridge">Fridge</option>
+              <option value="Washing Machine">Washing Machine</option>
+              <option value="Laptop">Laptop</option>
             </select>
             <mat-error *ngIf="inventoryForm.get('typeControl')!.hasError('required')">
               Required Inventory Type
@@ -30,9 +30,9 @@
             <mat-label>Select Inventory Brand</mat-label>
             <select matNativeControl required [formControl]="brandControl">
               <!--              <option label="--select something --"></option>-->
-              <option value="samsung">Samsung</option>
-              <option value="lg">LG</option>
-              <option value="innovex">Innovex</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Lg">LG</option>
+              <option value="Innovex">Innovex</option>
             </select>
             <mat-error *ngIf="inventoryForm.get('brandControl')!.hasError('required')">
               Required Inventory Brand

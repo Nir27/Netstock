@@ -30,4 +30,9 @@ export class DashboardComponent {
       // });
 
     }
+
+    searchInventory(){
+
+      this.route.navigateByUrl('/dashboard/search-inventory')
+    }
 }

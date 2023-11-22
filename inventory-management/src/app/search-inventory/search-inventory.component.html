@@ -1,0 +1,48 @@
+<div class="search-inventory-page">
+
+  <mat-card>
+
+     <div class="header">
+       <h1>Search Inventories</h1>
+     </div>
+    <form (ngSubmit)="onSearchInventory()" class="form-row">
+
+      <div class="email-input">
+        <mat-form-field class="full-width " appearance="outline">
+          <mat-label>Select Inventory Type</mat-label>
+          <select matNativeControl [(ngModel)]="type" name="type" >
+            <option value="TV">TV</option>
+            <option value="Fridge">Fridge</option>
+            <option value="Washing Machine">Washing Machine</option>
+            <option value="Laptop">Laptop</option>
+          </select>
+        </mat-form-field>
+      </div>
+
+      <div class="email-input">
+        <mat-form-field class="full-width " appearance="outline">
+          <mat-label>Select Inventory Brands</mat-label>
+          <mat-select [(ngModel)]="brands" name="brands" multiple >
+            <mat-option value="Samsung">Samsung</mat-option>
+            <mat-option value="LG">LG</mat-option>
+            <mat-option value="Innovex">Innovex</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="email-input">
+        <mat-form-field class="full-width " appearance="outline">
+          <mat-label>Description</mat-label>
+          <input [(ngModel)]="description" name="description" matInput >
+        </mat-form-field>
+      </div>
+
+    </form>
+  </mat-card>
+
+  <div class="view-items">
+
+
+  </div>
+
+</div>
