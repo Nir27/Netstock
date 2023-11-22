@@ -19,7 +19,8 @@ interface InventoryItem {
 })
 export class SearchInventoryComponent implements AfterViewInit{
 
-  displayedColumns: string[] = ['type', 'brand', 'price', 'date'];
+  pageNum :number=0;
+  displayedColumns: string[] = ['type', 'brand', 'price', 'description','date','actions'];
   dataSource: MatTableDataSource<InventoryItem>;
   constructor(private http:HttpClient) {
     this.dataSource = new MatTableDataSource<InventoryItem>([]);
@@ -37,22 +38,49 @@ ngAfterViewInit() {
   description: string="";
   onSearchInventory(){
 
-    // console.log(this.type);
-    // console.log(this.brands);
-    // console.log(this.description);
-
-
     const typeString = this.type.join(',');
     const brandsString = this.brands.join(',');
 
-    console.log(typeString);
-    console.log(brandsString);
-
-    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=0&limit=3`,{ responseType: 'json' }).subscribe((resultData:any)=>{
+    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=10`,{ responseType: 'json' }).subscribe((resultData:any)=>{
 
       console.log(resultData);
       this.dataSource.data = resultData.content;
 
     });
   }
+
+  onMore(){
+
+    this.pageNum = this.pageNum+1;
+
+    const typeString = this.type.join(',');
+    const brandsString = this.brands.join(',');
+
+    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=5`,{ responseType: 'json' }).subscribe((resultData:any)=>{
+
+      console.log(resultData);
+      this.dataSource.data = resultData.content;
+
+    });
+
+  }
+
+  onClear() {
+
+    this.type = [];
+    this.brands = [];
+    this.description = "";
+    this.dataSource.data = [];
+  }
+
+  onDelete(inveId:number){
+
+    this.http.delete(`http://localhost:8080/inventory?inveId=${inveId}`,{ responseType: 'json' }).subscribe((resultData:any)=>{
+
+      console.log(resultData);
+
+    });
+
+  }
+
 }

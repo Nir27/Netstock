@@ -39,13 +39,13 @@
 
       <div class="buttons">
         <button class="loginButton" mat-flat-button color="primary" (click)="onSearchInventory()">Search</button>
-        <button class="loginButton" mat-flat-button color="primary" type="submit" >More</button>
-        <button class="loginButton clearButton" mat-flat-button color="primary"  >Clear</button>
+        <button class="loginButton" mat-flat-button color="primary" (click)="onMore()" >More</button>
+        <button class="loginButton clearButton" mat-flat-button color="primary" (click)="onClear()" >Clear</button>
       </div>
 
     </form>
 
-      <div class="mat-elevation-z8 view-items">
+      <div class=" view-items">
         <table mat-table [dataSource]="dataSource" >
 
           <!-- Position Column -->
@@ -66,10 +66,26 @@
             <td mat-cell *matCellDef="let element"> {{element.price}} </td>
           </ng-container>
 
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description</th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+
           <!-- Symbol Column -->
           <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef> Expired Date </th>
             <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="actions">
+            <!-- Hide the header cell for the actions column -->
+            <th mat-header-cell *matHeaderCellDef style="display: none;"></th>
+            <td mat-cell *matCellDef="let element">
+              <!-- Add your icons or buttons for actions here -->
+              <mat-icon style="margin-right: 8px;" (click)="onDelete(element.inventoryId)">delete</mat-icon>
+              <mat-icon style="margin-left: 30px;" >edit</mat-icon>
+            </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
