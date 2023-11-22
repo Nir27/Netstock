@@ -8,6 +8,7 @@
 }
 
 .search-inventory-page h1{
+  margin-top: 10px;
   margin-left: 400px;
   color: white;
 }
@@ -20,7 +21,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
+  margin-top: 30px;
 }
 
 .search-inventory-page .email-input {
@@ -45,5 +46,11 @@
 .search-inventory-page .view-items {
   margin-left: 70px;
   margin-top: 40px;
+}
+
+.search-inventory-page .cancel-button {
+  margin-left: 950px;
+  margin-top: 30px;
+  background-color: #db1a1a;
 }
 

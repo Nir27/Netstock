@@ -31,7 +31,7 @@
             <select matNativeControl required [formControl]="brandControl">
               <!--              <option label="--select something --"></option>-->
               <option value="Samsung">Samsung</option>
-              <option value="Lg">LG</option>
+              <option value="LG">LG</option>
               <option value="Innovex">Innovex</option>
             </select>
             <mat-error *ngIf="updateInventoryForm.get('brandControl')!.hasError('required')">
@@ -74,17 +74,17 @@
           </mat-form-field>
         </div>
 
-        <div class="email-input condition">
-          <!--        <mat-form-field class="full-width" appearance="outline">-->
-          <mat-checkbox [formControl]="notApplicableControl" >Not Applicable</mat-checkbox>
-          <!--        </mat-form-field>-->
-        </div>
+<!--        <div class="email-input condition">-->
+<!--          &lt;!&ndash;        <mat-form-field class="full-width" appearance="outline">&ndash;&gt;-->
+<!--          <mat-checkbox [formControl]="notApplicableControl" >Not Applicable</mat-checkbox>-->
+<!--          &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+<!--        </div>-->
 
         <div class="buttons">
           <!--  <a class="aLink">Forgot Password?</a>-->
           <!--          <button class="loginButton cancelButton" mat-flat-button  (click)="onclose()" >Cancel</button>-->
           <button class="loginButton" mat-flat-button  (click)="onClear($event)" >Clear</button>
-          <button class="loginButton" mat-flat-button color="primary" type="submit" [disabled]="!updateInventoryForm.valid">Save</button>
+          <button class="loginButton" mat-flat-button color="primary" type="submit" (click)="onUpdateInventory()" >Save</button>
         </div>
 
       </form>

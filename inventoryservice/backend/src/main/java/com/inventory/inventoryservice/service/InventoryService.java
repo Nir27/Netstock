@@ -6,11 +6,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface InventoryService {
 
     Inventory addInventory(Inventory inventory);
+
+    Optional<Inventory> findInventory(Integer inveId);
 
     void updateInventory(Inventory inventory,Integer inveId);
 

@@ -22,6 +22,12 @@ public class InventoryServiceImpl implements  InventoryService{
     }
 
     @Override
+    public Optional<Inventory> findInventory(Integer inveId){
+
+        return inventoryRepository.findById(inveId);
+    }
+
+    @Override
     public Page<Inventory> searchInventory(List<String> brands, List<String> types, String description,Pageable pageable){
 
         return inventoryRepository.searchInventory(brands, types, description,pageable);

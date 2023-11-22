@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDatepicker} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import {MatSnackBarConfig} from "@angular/material/snack-bar";
@@ -11,12 +11,26 @@ import {HttpClient} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {NgModel} from "@angular/forms";
 
+
+interface ItemDetails {
+  inventoryId:number;
+  type: string;
+  brand: string;
+  price: number;
+  date: Date;
+  description:string;
+  userId:number;
+}
+
 @Component({
   selector: 'app-add-inventory',
   templateUrl: './update-inventory.component.html',
   styleUrls: ['./update-inventory.component.css']
 })
 export class UpdateInventoryComponent implements OnInit{
+
+  // @Input() itemId: number | undefined;
+  itemDetails: ItemDetails | undefined;
 
   updateInventoryForm! :  FormGroup<any>;
   type:String ="";
@@ -31,18 +45,17 @@ export class UpdateInventoryComponent implements OnInit{
   dateControl!:FormControl;
   // notApplicableControl!:FormControl;
   notApplicableControl: FormControl<boolean | null> = new FormControl(false);
-  constructor(private route:Router,private http:HttpClient,private datePipe: DatePipe,private snackBar:MatSnackBar) {
+  constructor(private route:Router,private http:HttpClient,private datePipe: DatePipe,private snackBar:MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: { itemId: number }) {
 
 
   }
 
   ngOnInit() {
 
-    // this.inventoryForm = new FormGroup(
-    //   {
-    //     type: new  FormControl ('',[Validators.required])
-    //   }
-    // )
+    if (this.data.itemId !== undefined) {
+      this.fetchItemDetails(this.data.itemId);
+    }
+
     this.typeControl = new FormControl('', [Validators.required]);
     this.brandControl = new FormControl('', [Validators.required]);
     this.descriptionControl = new FormControl('', [Validators.required]);
@@ -59,6 +72,32 @@ export class UpdateInventoryComponent implements OnInit{
       notApplicableControl: this.notApplicableControl
     });
 
+    // this.updateInventoryForm.patchValue({
+    //   typeControl: this.itemDetails?.type,
+    //   brandControl: this.itemDetails?.brand,
+    //   descriptionControl: this.itemDetails?.description,
+    //   priceControl: this.itemDetails?.price,
+    //   dateControl: this.itemDetails?.date,
+    // });
+
+  }
+
+
+  fetchItemDetails(itemId: number | undefined) {
+    console.log(itemId);
+    this.http.get<ItemDetails>(`http://localhost:8080/inventory/find?inveId=${itemId}`)
+      .subscribe((resultData) => {
+        this.itemDetails = resultData;
+        console.log(this.itemDetails);
+
+        this.updateInventoryForm.patchValue({
+          typeControl: this.itemDetails?.type,
+          brandControl: this.itemDetails?.brand,
+          descriptionControl: this.itemDetails?.description,
+          priceControl: this.itemDetails?.price,
+          dateControl: this.itemDetails?.date,
+        });
+      });
   }
 
   onUpdateInventory(){
@@ -80,7 +119,7 @@ export class UpdateInventoryComponent implements OnInit{
 
     }
 
-    this.http.put("http://localhost:8080/inventory",bodydata,{ responseType: 'text' }).subscribe((resultData:any)=>{
+    this.http.put(`http://localhost:8080/inventory?inveId=${this.itemDetails?.inventoryId}`,bodydata,{ responseType: 'text' }).subscribe((resultData:any)=>{
 
 
       if (resultData.includes('Inventory is updated')) {

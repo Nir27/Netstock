@@ -6,6 +6,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Dialog} from "@angular/cdk/dialog";
 import {AddInventoryComponent} from "../add-inventory/add-inventory.component";
 import {UpdateInventoryComponent} from "../update-inventory/update-inventory.component";
+import {MatDialog} from "@angular/material/dialog";
+import {Route, Router} from "@angular/router";
 
 
 interface InventoryItem {
@@ -25,7 +27,7 @@ export class SearchInventoryComponent implements AfterViewInit{
   pageNum :number=0;
   displayedColumns: string[] = ['type', 'brand', 'price', 'description','date','actions'];
   dataSource: MatTableDataSource<InventoryItem>;
-  constructor(private http:HttpClient,public dialog:Dialog) {
+  constructor(private route:Router,private http:HttpClient,public dialog:MatDialog) {
 
     this.dataSource = new MatTableDataSource<InventoryItem>([]);
 
@@ -46,7 +48,7 @@ ngAfterViewInit() {
     const typeString = this.type.join(',');
     const brandsString = this.brands.join(',');
 
-    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=10`,{ responseType: 'json' }).subscribe((resultData:any)=>{
+    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=5`,{ responseType: 'json' }).subscribe((resultData:any)=>{
 
       console.log(resultData);
       this.dataSource.data = resultData.content;
@@ -91,8 +93,13 @@ ngAfterViewInit() {
 
   onUpdateInventoryPopup(inveId:number){
 
-    const dialogRef= this.dialog.open(UpdateInventoryComponent,{width:'600px'});
+    console.log(inveId);
+    const dialogRef= this.dialog.open(UpdateInventoryComponent,{width:'600px',data: { itemId: inveId}});
 
+  }
+
+  onChange(){
+    this.route.navigateByUrl('/dashboard');
   }
 
 }

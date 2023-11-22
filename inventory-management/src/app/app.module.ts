@@ -13,7 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { AddInventoryComponent } from './add-inventory/add-inventory.component';
@@ -56,10 +56,11 @@ import { UpdateInventoryComponent } from './update-inventory/update-inventory.co
     MatCheckboxModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
 
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{ provide: MAT_DIALOG_DATA, useValue: {} },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -89,7 +89,7 @@
                 <mat-icon  style="color: #db1a1a;margin-right: 8px;">delete</mat-icon>
               </button>
               <button mat-icon-button (click)="onUpdateInventoryPopup(element.inventoryId)" >
-                <mat-icon style="color: blue;margin-left :30px;">edit</mat-icon>
+                <mat-icon style="color: #7643D2;margin-left :30px;">edit</mat-icon>
               </button>
             </td>
           </ng-container>
@@ -103,6 +103,8 @@
                        aria-label="Select page of periodic elements">
         </mat-paginator>
       </div>
+
+      <button class="cancel-button" mat-flat-button  (click)="onChange()" >Cancel</button>
 
       </mat-card-content>
   </mat-card>
