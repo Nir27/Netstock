@@ -1,7 +1,7 @@
 <div class="search-inventory-page">
 
   <mat-card>
-
+    <mat-card-content>
      <div class="header">
        <h1>Search Inventories</h1>
      </div>
@@ -9,7 +9,7 @@
 
       <div class="email-input">
         <mat-form-field class="full-width " appearance="outline">
-          <mat-label>Select Inventory Type</mat-label>
+          <mat-label>Inventory Type</mat-label>
           <select matNativeControl [(ngModel)]="type" name="type" >
             <option value="TV">TV</option>
             <option value="Fridge">Fridge</option>
@@ -21,7 +21,7 @@
 
       <div class="email-input">
         <mat-form-field class="full-width " appearance="outline">
-          <mat-label>Select Inventory Brands</mat-label>
+          <mat-label>Inventory Brands</mat-label>
           <mat-select [(ngModel)]="brands" name="brands" multiple >
             <mat-option value="Samsung">Samsung</mat-option>
             <mat-option value="LG">LG</mat-option>
@@ -37,12 +37,21 @@
         </mat-form-field>
       </div>
 
+      <div class="buttons">
+        <button class="loginButton" mat-flat-button color="primary" (click)="onSearchInventory()">Search</button>
+        <button class="loginButton" mat-flat-button color="primary" type="submit" >More</button>
+        <button class="loginButton clearButton" mat-flat-button color="primary"  >Clear</button>
+      </div>
+
     </form>
+
+      <div class="view-items">
+
+
+      </div>
+
+      </mat-card-content>
   </mat-card>
 
-  <div class="view-items">
-
-
-  </div>
 
 </div>

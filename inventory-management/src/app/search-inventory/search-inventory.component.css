@@ -3,14 +3,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 80vh; /* This ensures that the container takes the full height of the viewport */
+  height: 100vh; /* This ensures that the container takes the full height of the viewport */
+
+}
+
+.search-inventory-page h1{
+  margin-left: 400px;
+  color: white;
 }
 
 .search-inventory-page .mat-card {
   width: 100%; /* Adjust the width as needed */
-  /*margin-top: -100px;*/
 }
-
 
 .search-inventory-page .form-row {
   display: flex;
@@ -20,7 +24,21 @@
 }
 
 .search-inventory-page .email-input {
-  flex: 0 0 30%; /* Adjust the width as needed */
+  flex: 0 0 20%; /* Adjust the width as needed */
   /*margin-bottom: 16px; !* Add margin between form fields *!*/
+  margin-left: 30px;
+}
+
+.search-inventory-page .buttons {
+  text-align: center;
+  margin-top: 80px;
+  width: 300px;
+  margin-left: 20px;
+  /*margin-right: 20px;*/
+}
+
+.search-inventory-page .loginButton {
+  width: 25%;
   margin-left: 20px;
 }
+
