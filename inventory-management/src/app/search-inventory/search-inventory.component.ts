@@ -3,6 +3,9 @@ import {NgModel} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {Dialog} from "@angular/cdk/dialog";
+import {AddInventoryComponent} from "../add-inventory/add-inventory.component";
+import {UpdateInventoryComponent} from "../update-inventory/update-inventory.component";
 
 
 interface InventoryItem {
@@ -22,8 +25,10 @@ export class SearchInventoryComponent implements AfterViewInit{
   pageNum :number=0;
   displayedColumns: string[] = ['type', 'brand', 'price', 'description','date','actions'];
   dataSource: MatTableDataSource<InventoryItem>;
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,public dialog:Dialog) {
+
     this.dataSource = new MatTableDataSource<InventoryItem>([]);
+
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator|undefined;
@@ -78,8 +83,15 @@ ngAfterViewInit() {
     this.http.delete(`http://localhost:8080/inventory?inveId=${inveId}`,{ responseType: 'json' }).subscribe((resultData:any)=>{
 
       console.log(resultData);
+      this.onSearchInventory();
 
     });
+
+  }
+
+  onUpdateInventoryPopup(inveId:number){
+
+    const dialogRef= this.dialog.open(UpdateInventoryComponent,{width:'600px'});
 
   }
 

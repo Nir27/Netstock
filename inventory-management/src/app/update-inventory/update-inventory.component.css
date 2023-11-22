@@ -1,4 +1,4 @@
-.register-page {
+.update-inventory-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,46 +6,56 @@
   /*background-color: #f5f5f5; !* Set a background color of your choice *!*/
 }
 
-.register-page mat-card {
+.update-inventory-page mat-card {
   width: 400px; /* Adjust the width based on your design preferences */
   max-width: 100%;
   background-color:  #484E55;
 }
 
-.register-page .mat-card-content {
+.update-inventory-page .mat-card-content {
   padding: 20px;
 }
 
-.register-page .header {
+.update-inventory-page .header {
   text-align: center;
   margin-bottom: 20px;
   color: white;
+  margin-top: 10px;
 }
 
-.register-page .mat-form-field {
+.update-inventory-page .mat-form-field {
   width: 100%;
 }
 
-.register-page .full-width {
+.update-inventory-page .full-width {
   width: 100%;
 }
 
-.register-page .email-input {
+.update-inventory-page .email-input {
   margin-bottom: 15px;
 }
 
-.register-page .buttons {
+.update-inventory-page .buttons {
   text-align: center;
   margin-top: 20px;
-
+  margin-left: 110px;
 }
 
-.register-page .loginButton {
-  width: 40%;
+.update-inventory-page .loginButton {
+  width: 20%;
+  margin-left: 20px;
+}
+
+.update-inventory-page .cancelButton {
+  background-color: #F20C0C;
 }
 
 .custom-snackbar {
   height: 80px; /* Set the desired height */
   background-color: #2196F3; /* Customize the background color */
   color: #FFFFFF; /* Customize the text color */
+}
+
+.update-inventory-page .condition{
+  margin-top: -20px;
 }

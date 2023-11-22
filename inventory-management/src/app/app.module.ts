@@ -25,6 +25,7 @@ import { SearchInventoryComponent } from './search-inventory/search-inventory.co
 import {MatSelectModule} from "@angular/material/select";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
+import { UpdateInventoryComponent } from './update-inventory/update-inventory.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import {MatTableModule} from "@angular/material/table";
     DashboardComponent,
     RegisterComponent,
     AddInventoryComponent,
-    SearchInventoryComponent
+    SearchInventoryComponent,
+    UpdateInventoryComponent
   ],
   imports: [
     BrowserModule,

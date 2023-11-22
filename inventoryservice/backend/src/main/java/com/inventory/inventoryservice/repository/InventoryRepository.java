@@ -18,10 +18,10 @@ public interface InventoryRepository extends JpaRepository<Inventory,Integer> {
 
 
 
-//    @Query(value = "SELECT * FROM Inventory i WHERE (IFNULL(:brands, '') = '' OR i.brand IN (:brands)) AND (IFNULL(:types, '') = '' OR i.type IN (:types)) AND (IFNULL(:description, '') = '' OR i.description LIKE %:description%)", nativeQuery = true)
-//    public Page<Inventory> searchInventory(@Param("brands") List<String> brands, @Param("types") List<String> types, @Param("description") String description,Pageable pageable);
+    @Query(value = "SELECT * FROM Inventory i WHERE (IFNULL(:brands, '') = '' OR i.brand IN (:brands)) AND (IFNULL(:types, '') = '' OR i.type IN (:types)) AND (IFNULL(:description, '') = '' OR i.description LIKE %:description%)", nativeQuery = true)
+    public Page<Inventory> searchInventory(@Param("brands") List<String> brands, @Param("types") List<String> types, @Param("description") String description,Pageable pageable);
 
 
-    @Query("SELECT i FROM Inventory i WHERE (:brands IS NULL OR i.brand IN :brands) AND (:types IS NULL OR i.type IN :types) AND (:description IS NULL OR i.description LIKE %:description%)")
-    public Page<Inventory> searchInventory(@Param("brands") List<String> brands, @Param("types") List<String> types, @Param("description") String description, Pageable pageable);
+//    @Query("SELECT i FROM Inventory i WHERE (:brands IS NULL OR i.brand IN :brands) AND (:types IS NULL OR i.type IN :types) AND (:description IS NULL OR i.description LIKE %:description%)")
+//    public Page<Inventory> searchInventory(@Param("brands") List<String> brands, @Param("types") List<String> types, @Param("description") String description, Pageable pageable);
 }
