@@ -5,17 +5,17 @@
      <div class="header">
        <h1>Search Inventories</h1>
      </div>
-    <form (ngSubmit)="onSearchInventory()" class="form-row">
+    <form class="form-row">
 
       <div class="email-input">
         <mat-form-field class="full-width " appearance="outline">
           <mat-label>Inventory Type</mat-label>
-          <select matNativeControl [(ngModel)]="type" name="type" >
-            <option value="TV">TV</option>
-            <option value="Fridge">Fridge</option>
-            <option value="Washing Machine">Washing Machine</option>
-            <option value="Laptop">Laptop</option>
-          </select>
+          <mat-select [(ngModel)]="type" name="type" multiple >
+            <mat-option value="Fridge">Fridge</mat-option>
+            <mat-option value="TV">TV</mat-option>
+            <mat-option value="Washing Machine">Washing Machine</mat-option>
+            <mat-option value="Laptop">Laptop</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 
@@ -45,9 +45,41 @@
 
     </form>
 
-      <div class="view-items">
+      <div class="mat-elevation-z8 view-items">
+        <table mat-table [dataSource]="dataSource" >
 
+          <!-- Position Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Item Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+          </ng-container>
 
+          <!-- Name Column -->
+          <ng-container matColumnDef="brand">
+            <th mat-header-cell *matHeaderCellDef> Item Brand </th>
+            <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Expired Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
       </div>
 
       </mat-card-content>

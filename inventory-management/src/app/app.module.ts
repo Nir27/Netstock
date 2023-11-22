@@ -23,6 +23,8 @@ import {CommonModule, DatePipe} from "@angular/common";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { SearchInventoryComponent } from './search-inventory/search-inventory.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import {MatSelectModule} from "@angular/material/select";
     CommonModule,
     FormsModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatTableModule
 
   ],
   providers: [DatePipe],
