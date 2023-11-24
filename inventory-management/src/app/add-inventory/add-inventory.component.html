@@ -66,7 +66,7 @@
 
         <div class="email-input">
         <mat-form-field class="full-width " appearance="outline">
-          <mat-label>Choose a date</mat-label>
+          <mat-label>Choose Expired Date</mat-label>
           <input matInput required [matDatepicker]="picker" [formControl]="dateControl" [matDatepickerFilter]="filterDates " [disabled]="inventoryForm.get('notApplicableControl')?.value" >
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>

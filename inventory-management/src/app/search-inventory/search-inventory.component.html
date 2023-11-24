@@ -39,7 +39,7 @@
 
       <div class="buttons">
         <button class="loginButton" mat-flat-button color="primary" (click)="onSearchInventory()">Search</button>
-        <button class="loginButton" mat-flat-button color="primary" (click)="onMore()" >More</button>
+        <button class="loginButton" mat-flat-button color="primary" [disabled]="!hasMoreResults" (click)="onMore()" >More</button>
         <button class="loginButton clearButton" mat-flat-button color="primary" (click)="onClear()" >Clear</button>
       </div>
 

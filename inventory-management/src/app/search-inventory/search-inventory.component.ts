@@ -40,36 +40,69 @@ ngAfterViewInit() {
     this.dataSource.paginator = this.paginator!;
 }
 
+  hasMoreResults: boolean = true
   type:string[]=[];
   brands:string[]=[];
   description: string="";
-  onSearchInventory(){
+  // onSearchInventory(){
+  //
+  //   const typeString = this.type.join(',');
+  //   const brandsString = this.brands.join(',');
+  //   console.log(typeString);
+  //   console.log(brandsString);
+  //
+  //   this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=5`,{ responseType: 'json' }).subscribe((resultData:any)=>{
+  //
+  //     console.log(resultData);
+  //     this.dataSource.data = resultData.content;
+  //
+  //   });
+  // }
+  //
+  // onMore(){
+  //
+  //   this.pageNum = this.pageNum+1;
+  //
+  //   const typeString = this.type.join(',');
+  //   const brandsString = this.brands.join(',');
+  //
+  //   this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=5`,{ responseType: 'json' }).subscribe((resultData:any)=>{
+  //
+  //     console.log(resultData);
+  //     this.dataSource.data = resultData.content;
+  //
+  //   });
+  //
+  // }
 
-    const typeString = this.type.join(',');
-    const brandsString = this.brands.join(',');
-
-    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=5`,{ responseType: 'json' }).subscribe((resultData:any)=>{
-
-      console.log(resultData);
-      this.dataSource.data = resultData.content;
-
-    });
+  onSearchInventory() {
+    this.pageNum = 0; // Reset page number when initiating a new search
+    this.loadResults();
   }
 
-  onMore(){
+  onMore() {
+    this.pageNum++;
+    this.loadResults();
+  }
 
-    this.pageNum = this.pageNum+1;
-
+  loadResults() {
     const typeString = this.type.join(',');
     const brandsString = this.brands.join(',');
 
-    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=5`,{ responseType: 'json' }).subscribe((resultData:any)=>{
 
-      console.log(resultData);
-      this.dataSource.data = resultData.content;
+    this.http.get(`http://localhost:8080/inventory?brands=${brandsString}&types=${typeString}&description=${this.description}&page=${this.pageNum}&limit=5`, { responseType: 'json' })
+      .subscribe((resultData: any) => {
+        console.log(resultData);
 
-    });
+        if (this.pageNum === 0) {
+          this.dataSource.data = resultData.content;
+        } else {
+          this.dataSource.data = [...this.dataSource.data, ...resultData.content];
+        }
 
+        this.hasMoreResults = resultData.totalPages > this.pageNum + 1;
+
+      });
   }
 
   onClear() {
