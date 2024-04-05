@@ -1,0 +1,97 @@
+<div class="update-inventory-page">
+  <mat-card>
+    <mat-card-content>
+      <div class="header">
+
+        <h1>Update Inventory</h1>
+      </div>
+
+      <form (ngSubmit)="onUpdateInventory()" name="updateInventoryForm" [formGroup]="updateInventoryForm">
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Select Inventory Type</mat-label>
+            <select matNativeControl required [formControl]="typeControl">
+              <!--              <option label="&#45;&#45;select something &#45;&#45;"></option>-->
+              <option value="TV">TV</option>
+              <option value="Fridge">Fridge</option>
+              <option value="Washing Machine">Washing Machine</option>
+              <option value="Laptop">Laptop</option>
+            </select>
+            <mat-error *ngIf="updateInventoryForm.get('typeControl')!.hasError('required')">
+              Required Inventory Type
+            </mat-error>
+            <mat-hint>You can pick up inventory type here</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Select Inventory Brand</mat-label>
+            <select matNativeControl required [formControl]="brandControl">
+              <!--              <option label="--select something --"></option>-->
+              <option value="Samsung">Samsung</option>
+              <option value="LG">LG</option>
+              <option value="Innovex">Innovex</option>
+            </select>
+            <mat-error *ngIf="updateInventoryForm.get('brandControl')!.hasError('required')">
+              Required Inventory Brand
+            </mat-error>
+            <mat-hint>You can pick up inventory brand here</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Description</mat-label>
+            <input [formControl]="descriptionControl" matInput required>
+            <mat-error *ngIf="updateInventoryForm.get('descriptionControl')!.hasError('required')">
+              Required description
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Price</mat-label>
+            <input [formControl]="priceControl" matInput required>
+            <mat-error *ngIf="updateInventoryForm.get('priceControl')!.hasError('required')">
+              Required price
+            </mat-error>
+            <mat-error *ngIf="updateInventoryForm.get('priceControl')!.hasError('min')">
+              Price cannot be negative
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="email-input">
+          <mat-form-field class="full-width " appearance="outline">
+            <mat-label>Choose Expired Date</mat-label>
+            <input matInput required [matDatepicker]="picker" [formControl]="dateControl" [matDatepickerFilter]="filterDates " [disabled]="updateInventoryForm.get('notApplicableControl')?.value" >
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+<!--        <div class="email-input condition">-->
+<!--          &lt;!&ndash;        <mat-form-field class="full-width" appearance="outline">&ndash;&gt;-->
+<!--          <mat-checkbox [formControl]="notApplicableControl" >Not Applicable</mat-checkbox>-->
+<!--          &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+<!--        </div>-->
+
+        <div class="buttons">
+          <!--  <a class="aLink">Forgot Password?</a>-->
+          <!--          <button class="loginButton cancelButton" mat-flat-button  (click)="onclose()" >Cancel</button>-->
+          <button class="loginButton" mat-flat-button  (click)="onClear($event)" >Clear</button>
+          <button class="loginButton" mat-flat-button color="primary" type="submit" (click)="onUpdateInventory()" >Save</button>
+        </div>
+
+      </form>
+
+
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
